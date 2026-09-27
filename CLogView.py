@@ -165,7 +165,6 @@ class LogProcessor():
         """
         def open_file_safely(path, read_end):
             try:
-                print('~ open file safely')
                 f = open(path, 'r', encoding='utf-8', errors='ignore')
                 # Track the unique OS Inode identifier of the file (falls back to path metadata on Windows)
                 stat = os.stat(path)
