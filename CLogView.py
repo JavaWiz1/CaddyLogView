@@ -294,11 +294,11 @@ class LogProcessor():
         elif meta_field == 'status':
             if isinstance(value, int):
                 if value >= 500:
-                    new_val = f'{COLOR.RED}{value}{STYLE.RESET}'
+                    new_val = f'{COLOR.RED}{value:3d}{STYLE.RESET}'
                 elif value >= 400:
-                    new_val = f'{COLOR.YELLOW}{value}{STYLE.RESET}'
+                    new_val = f'{COLOR.YELLOW}{value:3d}{STYLE.RESET}'
                 else:
-                    new_val = f'{COLOR.GREEN}{value}{STYLE.RESET}'
+                    new_val = f'{COLOR.GREEN}{value:3d}{STYLE.RESET}'
 
         return new_val
     
