@@ -4,6 +4,8 @@ A python filter to view Caddy formatted log files.
 Simplifies the viewing of standard Caddy formtted log files, with
 some minor color coding capabilities to enhance viewing.
 
+You can use the default format, or supply your own to customize the output (see example in env.template)
+
 Transform this:
 ```
 {"level":"info","ts":1790435959.9907265,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x4000558b60"}
@@ -27,11 +29,11 @@ into this:
 
 Syntax:   
 
-    python CLogView.py [-h] [-fmt LOG_FORMAT] [-f] [-l] [-c] [-na] logfile
+> python CLogView.py [-h] [-fmt LOG_FORMAT] [-f] [-l] [-c] [-na] logfile
 
 To get paging capabilities, you can combine with less -r
     
-    python CLogView.py caddy.log | less -r
+> python CLogView.py caddy.log | less -r
 
 ## Parameter Notes:
 | Parameter | Note |
