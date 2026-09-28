@@ -163,7 +163,7 @@ class LogProcessor():
         :param read_from_end: If True, skips old logs and starts reading from the current end.
                             If False, reads the entire file from the beginning first.
         """
-        def open_file_safely(path, read_end):
+        def open_file_safely(path: str|pathlib.Path, read_end: bool) -> Tuple[TextIOWrapper, float]:
             try:
                 f = open(path, 'r', encoding='utf-8', errors='ignore')
                 # Track the unique OS Inode identifier of the file (falls back to path metadata on Windows)
@@ -174,7 +174,7 @@ class LogProcessor():
                     f.seek(0, os.SEEK_END)
                 return f, inode
             except FileNotFoundError:
-                return None, None
+                return None, None # type: ignore
 
         # Initial file capture
         f_handle: TextIOWrapper|None
@@ -234,7 +234,7 @@ class LogProcessor():
             if f_handle:
                 f_handle.close()
 
-    def _translate_log_line(self, json_logline: dict) -> str:
+    def _translate_log_line(self, json_logline: SimpleNamespace) -> str:
         out_line = self._format
         line_level = ''
         for field_def in self.logline_meta_definitions:
